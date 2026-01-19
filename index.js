@@ -6,13 +6,7 @@ import http from "http"
 // console.log("hellow node")
 
 // fs.writeFileSync("tst.txt", "hey node", "utf-8") 
-fs.writeFileSync(
-  "./view/about.html",
-  `<h1>About Page</h1>
-<p>This is the About Page of our Node.js server.</p>
-<a href="/">Go Back Home</a>`,
-  "utf-8"
-);
+
 
 
 // const data = fs.readFileSync("./tst.txt", "utf-8");
@@ -26,10 +20,16 @@ const PORT = 4000
 
 const server = http.createServer((req, res) => {
     
+    if (req.url === '/.well-known/appspecific/com.chrome.devtools.json') {
+        return res.end()
+    }
+
     console.log(req.url)
     res.setHeader("Content-Type", "text/html")
     const home = fs.readFileSync("./view/home.html", "utf-8");
     const about = fs.readFileSync("./view/about.html", "utf-8");
+
+
 
     switch (req.url) {
         case '/':
