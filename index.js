@@ -15,7 +15,6 @@ import http from "http"
 // New-Item view\about.html
 
 
-
 const PORT = 4000
 
 const server = http.createServer((req, res) => {
@@ -51,10 +50,6 @@ server.listen(PORT, () => {
     console.log(`Server running  ${PORT}`)
 })
 
-
-
-
-
-//   fs.mkdir('./view', (er) => {
-//       if (er) console.log(er);
-//  });
+  fs.mkdir('./view', (er) => {
+      if (er) console.log(er);
+ });
